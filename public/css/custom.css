@@ -1,0 +1,25 @@
+#checkForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+#checkForm input {
+    width: 50%;
+}
+
+.form-group {
+    width: 100%;
+    text-align: center;
+}
+
+@media all and (max-width: 768px) {
+    #checkForm .input-group {
+        width: 100% !important;
+    }
+
+    .container .card {
+        width: 100% !important;
+    }
+}
