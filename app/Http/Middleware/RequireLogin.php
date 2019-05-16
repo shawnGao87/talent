@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Cookie;
 
 class RequireLogin
 {
@@ -17,9 +17,8 @@ class RequireLogin
     public function handle($request, Closure $next)
     {
         require_once($_SERVER['DOCUMENT_ROOT'] . '/config.php');
-        // require_login();
         if (empty($USER) || $USER->id == '') {
-            return redirect('../login');
+            return redirect('../login/index.php?redirect=talent');
         } else {
             return $next($request);
         }

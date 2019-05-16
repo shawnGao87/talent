@@ -26,3 +26,5 @@ Route::get('admin', 'AdminController@index');
 Route::get('users', 'AdminController@getAllUsers');
 
 Route::get('UserSkills/{id}', 'UserSkillController@index');
+
+Route::Auth();
