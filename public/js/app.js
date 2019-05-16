@@ -93339,8 +93339,8 @@ if (document.getElementById("languageCreate")) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Repositories\moodle\moodle\talent\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Repositories\moodle\moodle\talent\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\inetpub\wwwroot\talent\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\inetpub\wwwroot\talent\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
