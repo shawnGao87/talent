@@ -92968,7 +92968,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container mt-5"
+        className: "container my-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"], {
         className: "mb-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Header, null, "Basic Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Text, null, "FirstName: ", this.state.firstname, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "LastName: ", this.state.lastname))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Tabs"], {
@@ -93016,21 +93016,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function UserCountryLived(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row justify-content-center p-3"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "userCountryLived/create/",
+    className: "btn btn-success"
+  }, "Add New Country"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
     striped: true,
     bordered: true,
     hover: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "userCountryLived/create/",
-    className: "btn btn-success"
-  }, "Add New Country")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Country"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Residence Length"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Residence Recency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Edit"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, props.userSkills.user_country_lived.map(function (country) {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Country"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Residence Length"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Residence Recency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Edit"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, props.userSkills.user_country_lived.map(function (country) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: country.id
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.country), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.residency_length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.residency_recency), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.country), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.residency_length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.residency_recency), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "userCountryLived/" + country.id + "/edit",
       className: "btn btn-primary"
     }, "Edit / Delete")));
-  })));
+  }))));
 }
 
 /***/ }),
@@ -93051,21 +93055,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function UserLanguageSkill(props) {
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Table"], {
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "container"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "row justify-content-center p-3"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    href: "userLanguageSkills/create/",
+    className: "btn btn-success"
+  }, "Add New Language"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_0__["Table"], {
     striped: true,
     bordered: true,
     hover: true
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-    href: "userLanguageSkills/create/",
-    className: "btn btn-success"
-  }, "Add New Language")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Language"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Speaking"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Reading"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Writing"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Edit"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, props.userSkills.language_skills.map(function (l) {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Language"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Speaking"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Reading"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Writing"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Edit"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, props.userSkills.language_skills.map(function (l) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
       key: l.id
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.id), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.language), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.speaking), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.reading), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.writing), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.language), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.speaking), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.reading), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.writing), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "userLanguageSkills/" + l.id + "/edit",
       className: "btn btn-primary"
     }, "Edit / Detele")));
-  })));
+  }))));
 }
 
 /***/ }),
@@ -93339,8 +93347,8 @@ if (document.getElementById("languageCreate")) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\inetpub\wwwroot\talent\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\inetpub\wwwroot\talent\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Repositories\moodle\moodle\talent\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Repositories\moodle\moodle\talent\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

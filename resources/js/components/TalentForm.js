@@ -45,7 +45,7 @@ export default class TalentForm extends Component {
     }
     render() {
         return (
-            <div className="container mt-5">
+            <div className="container my-5">
                 <Card className="mb-5">
                     <Card.Header>Basic Info</Card.Header>
                     <Card.Body>
