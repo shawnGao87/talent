@@ -15,21 +15,21 @@ class UserSkillController extends Controller
      */
     public function index($id)
     {
-        $user = User::with(['language_skills', 'languages', 'countries', 'user_country_lived'])->find($id)->toArray();
+        $user = $this->getUserSkills($id);
 
-        if (sizeof($user['language_skills']) > 0) {
-            foreach ($user['language_skills'] as $key => $l) {
-                $user['language_skills'][$key]["language"] = Language::find($l['language_id'])->language;
-            }
-        }
-
-        if (sizeof($user['user_country_lived']) > 0) {
-            foreach ($user['user_country_lived'] as $key => $l) {
-                $user['user_country_lived'][$key]["country"] = Country::find($l['country_id'])->country;
-            }
-        }
-
-        // dd($user);
         return response()->json($user);
+    }
+
+    public function detail($id)
+    {
+        $user = $this->getUserSkills($id);
+
+        return view('admin.userdetail', compact('user'));
+    }
+
+    public function getUserSkills($id)
+    {
+        $user = User::with(['language_skills',  'user_country_lived'])->find($id)->toArray();
+        return $user;
     }
 }

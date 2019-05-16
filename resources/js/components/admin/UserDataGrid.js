@@ -1,10 +1,8 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "bootstrap-css-only/css/bootstrap.min.css";
-// import "mdbreact/dist/css/mdb.css";
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { MDBDataTable, MDBBtn } from "mdbreact";
+import { MDBDataTable } from "mdbreact";
 import axios from "axios";
 
 export default class UserDataGrid extends Component {
@@ -23,14 +21,13 @@ export default class UserDataGrid extends Component {
                         edit: (
                             <a
                                 className="btn btn-primary"
-                                href={"user/" + user.id}
+                                href={"UserSkills/detail/" + user.id}
                             >
                                 Detail
                             </a>
                         )
                     };
                 });
-                console.log(users);
                 this.setState({
                     data: { columns: this.state.columns, rows: users }
                 });

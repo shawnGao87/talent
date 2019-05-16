@@ -31,6 +31,11 @@ class UserCountryLived extends Model
         return $this->residenceRecencyOptions()[$attr];
     }
 
+    public function getCountryIdAttribute($attr)
+    {
+        return $this->countryNames()[$attr];
+    }
+
     public function residenceLengthOptions()
     {
         return [
@@ -50,5 +55,17 @@ class UserCountryLived extends Model
             3 => '3-10 years ago',
             4 => 'More than 10 years ago'
         ];
+    }
+
+    public function countryNames()
+    {
+        $countries = Country::all()->toArray();
+        $result = array();
+
+        foreach ($countries as $index => $country) {
+            $result[$country['id']] = $country['country'];
+        }
+        // dd($result);
+        return $result;
     }
 }

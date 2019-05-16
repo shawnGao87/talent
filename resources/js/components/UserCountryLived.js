@@ -27,7 +27,7 @@ export default function UserCountryLived(props) {
                     {props.userSkills.user_country_lived.map(country => {
                         return (
                             <tr key={country.id}>
-                                <td>{country.country}</td>
+                                <td>{country.country_id}</td>
                                 <td>{country.residency_length}</td>
                                 <td>{country.residency_recency}</td>
                                 <td>

@@ -10,25 +10,25 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $users = User::with(['language_skills', 'languages', 'countries', 'user_country_lived'])->get();
 
         return view('admin.index');
     }
 
     public function getAllUsers()
     {
-        $users = User::with(['language_skills', 'languages', 'countries', 'user_country_lived'])->get();
+        $users = User::with(['language_skills',  'user_country_lived'])->get();
 
         foreach ($users as $user) {
             $languageArr = array();
-            foreach ($user->languages as $l) {
-                array_push($languageArr, $l->language);
+            foreach ($user->language_skills as $l) {
+                array_push($languageArr, $l->language_id);
             }
             $user->known_language = implode(", ", $languageArr);
 
+
             $countryArr = array();
-            foreach ($user->countries as $c) {
-                array_push($countryArr, $c->country);
+            foreach ($user->user_country_lived as $c) {
+                array_push($countryArr, $c->country_id);
             }
             $user->lived_countries = implode(", ", $countryArr);
         }

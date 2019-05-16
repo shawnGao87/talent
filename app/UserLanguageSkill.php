@@ -37,6 +37,11 @@ class UserLanguageSkill extends Model
         return $this->languageProficiencyOptions()[$attribute];
     }
 
+    public function getLanguageIdAttribute($attribute)
+    {
+        return $this->languageName()[$attribute];
+    }
+
 
     // public function setSpeakingAttribute($attribute)
     // {
@@ -62,5 +67,16 @@ class UserLanguageSkill extends Model
             3 => "Advanced",
             4 => "Native"
         ];
+    }
+
+    public function languageName()
+    {
+        $languages = Language::all()->toArray();
+        $result = array();
+
+        foreach ($languages as $index => $language) {
+            $result[$language['id']] = $language['language'];
+        }
+        return $result;
     }
 }

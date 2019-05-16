@@ -29,7 +29,7 @@ export default function UserLanguageSkill(props) {
                     {props.userSkills.language_skills.map(l => {
                         return (
                             <tr key={l.id}>
-                                <td>{l.language}</td>
+                                <td>{l.language_id}</td>
                                 <td>{l.speaking}</td>
                                 <td>{l.reading}</td>
                                 <td>{l.writing}</td>

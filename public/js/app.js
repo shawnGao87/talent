@@ -93030,7 +93030,7 @@ function UserCountryLived(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Country"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Residence Length"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Residence Recency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Edit"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, props.userSkills.user_country_lived.map(function (country) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: country.id
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.country), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.residency_length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.residency_recency), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.country_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.residency_length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, country.residency_recency), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "userCountryLived/" + country.id + "/edit",
       className: "btn btn-primary"
     }, "Edit / Delete")));
@@ -93069,7 +93069,7 @@ function UserLanguageSkill(props) {
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Language"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Speaking"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Reading"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Writing"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Edit"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, props.userSkills.language_skills.map(function (l) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
       key: l.id
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.language), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.speaking), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.reading), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.writing), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.language_id), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.speaking), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.reading), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, l.writing), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       href: "userLanguageSkills/" + l.id + "/edit",
       className: "btn btn-primary"
     }, "Edit / Detele")));
@@ -93115,8 +93115,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
- // import "bootstrap-css-only/css/bootstrap.min.css";
-// import "mdbreact/dist/css/mdb.css";
 
 
 
@@ -93144,11 +93142,10 @@ function (_Component) {
             lived_countries: user.lived_countries,
             edit: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
               className: "btn btn-primary",
-              href: "user/" + user.id
+              href: "UserSkills/detail/" + user.id
             }, "Detail")
           };
         });
-        console.log(users);
 
         _this2.setState({
           data: {
