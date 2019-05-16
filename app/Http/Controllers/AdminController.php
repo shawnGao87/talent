@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
     public function index()
     {
+        $users = $this->allUsers();
 
-        return view('admin.index');
+        return view('admin.index', compact('users'));
     }
 
     public function getAllUsers()
+    {
+
+        $users = $this->allUsers();
+        return response()->json($users);
+    }
+
+
+    public function allUsers()
     {
         $users = User::with(['language_skills',  'user_country_lived'])->get();
 
@@ -33,6 +40,6 @@ class AdminController extends Controller
             $user->lived_countries = implode(", ", $countryArr);
         }
 
-        return response()->json($users);
+        return $users;
     }
 }
