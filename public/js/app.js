@@ -75875,7 +75875,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/TalentForm */ "./resources/js/components/TalentForm.js");
 
-__webpack_require__(/*! ./components/user/language/LanguageCreate */ "./resources/js/components/user/language/LanguageCreate.js");
+__webpack_require__(/*! ./components/admin/Filter */ "./resources/js/components/admin/Filter.js");
 
 /***/ }),
 
@@ -76149,23 +76149,192 @@ function UserLanguageSkill(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/user/language/LanguageCreate.js":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/user/language/LanguageCreate.js ***!
-  \*****************************************************************/
+/***/ "./resources/js/components/admin/Condition.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/admin/Condition.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LanguageCreate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Condition; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Condition =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Condition, _Component);
+
+  function Condition() {
+    var _this;
+
+    _classCallCheck(this, Condition);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Condition).call(this));
+    _this.state = {
+      conditionOptiones: ["Language", "Language Speaking Proficiency", "Language Reading Proficiency", "Language Writing Proficiency", "Country Lived", "Country Lived Residency Length", "Country Lived Residency Recency"]
+    };
+    return _this;
+  }
+
+  _createClass(Condition, [{
+    key: "render",
+    value: function render() {
+      var _this$props$prop = this.props.prop,
+          languages = _this$props$prop.languages,
+          countries = _this$props$prop.countries,
+          proficiencyOptions = _this$props$prop.proficiencyOptions,
+          residencyLengthOptions = _this$props$prop.residencyLengthOptions,
+          residencyRecencyOptions = _this$props$prop.residencyRecencyOptions,
+          numOfConditions = _this$props$prop.numOfConditions;
+
+      var renderOptions = function renderOptions(e) {
+        var key = e.target.value;
+        console.log(key);
+
+        switch (key) {
+          case "Language":
+            var optionEle = document.getElementById("condition".concat(numOfConditions, "_options"));
+
+            while (optionEle.firstChild) {
+              optionEle.removeChild(optionEle.firstChild);
+            }
+
+            languages.forEach(function (lan) {
+              var o = document.createElement("option");
+              o.value = lan.id;
+              o.innerHTML = lan.language;
+              optionEle.appendChild(o);
+            });
+            break;
+
+          case "Language Speaking Proficiency" || false || false:
+            var ele2 = document.getElementById("condition".concat(numOfConditions, "_options"));
+
+            while (ele2.firstChild) {
+              ele2.removeChild(ele2.firstChild);
+            }
+
+            for (var _key in proficiencyOptions) {
+              if (proficiencyOptions.hasOwnProperty(_key)) {
+                var o = document.createElement("option");
+                o.value = _key;
+                o.innerHTML = proficiencyOptions[_key];
+                ele2.appendChild(o);
+              }
+            }
+
+            break;
+
+          default:
+            break;
+        }
+      };
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center align-items-center col-md-5 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "flex item-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "12",
+        height: "12",
+        viewBox: "0 0 12 12",
+        className: "icon m-3",
+        style: {
+          shapeRendering: "geometricprecision"
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        fillRule: "evenodd",
+        fill: "currentColor",
+        d: "M7.41421356,6 L9.88226406,3.5319495 C10.0816659,3.33254771 10.0828664,3.01179862 9.88577489,2.81470708 L9.18529292,2.11422511 C8.97977275,1.90870494 8.66708101,1.91870543 8.4680505,2.11773594 L6,4.58578644 L3.5319495,2.11773594 C3.33254771,1.91833414 3.01179862,1.91713357 2.81470708,2.11422511 L2.11422511,2.81470708 C1.90870494,3.02022725 1.91870543,3.33291899 2.11773594,3.5319495 L4.58578644,6 L2.11773594,8.4680505 C1.91833414,8.66745229 1.91713357,8.98820138 2.11422511,9.18529292 L2.81470708,9.88577489 C3.02022725,10.0912951 3.33291899,10.0812946 3.5319495,9.88226406 L6,7.41421356 L8.4680505,9.88226406 C8.66745229,10.0816659 8.98820138,10.0828664 9.18529292,9.88577489 L9.88577489,9.18529292 C10.0912951,8.97977275 10.0812946,8.66708101 9.88226406,8.4680505 L7.41421356,6 L7.41421356,6 Z"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "flex item-center col-xs-12 col-sm-3"
+      }, numOfConditions == 1 ? "Where" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        name: "andOr",
+        className: "form-control"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "and"
+      }, "And"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "or"
+      }, "Or"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "condition".concat(numOfConditions),
+        className: "form-control col-xs-12 col-sm-9",
+        name: "condition".concat(numOfConditions),
+        defaultValue: "Language",
+        onChange: renderOptions
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        disabled: true
+      }, "Select Filter"), this.state.conditionOptiones.map(function (c, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: index,
+          value: c
+        }, c);
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center align-items-center col-md-7 col-sm-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "flex item-center col-xs-12 col-sm-3"
+      }, "Is Any Of"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "flex item-center col-xs-12 col-sm-9"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "condition".concat(numOfConditions, "_options"),
+        className: "form-control",
+        multiple: true,
+        size: 3
+      }, languages.map(function (lan) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: lan.id,
+          key: lan.id
+        }, lan.language);
+      })))));
+    }
+  }]);
+
+  return Condition;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/Filter.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/admin/Filter.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Filter; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Condition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Condition */ "./resources/js/components/admin/Condition.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -76189,74 +76358,107 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var LanguageCreate =
+var Filter =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(LanguageCreate, _Component);
+  _inherits(Filter, _Component);
 
-  _createClass(LanguageCreate, [{
+  _createClass(Filter, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/talent/languages").then(function (res) {
-        return _this2.setState({
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("./allLanguages").then(function (res) {
+        console.log(res.data);
+
+        _this2.setState({
           languages: res.data
         });
+      })["catch"](function (e) {
+        return console.log(e);
+      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("./allCountries").then(function (res) {
+        console.log(res.data);
+
+        _this2.setState({
+          countries: res.data
+        });
+      })["catch"](function (e) {
+        return console.log(e);
       });
     }
   }]);
 
-  function LanguageCreate() {
+  function Filter() {
     var _this;
 
-    _classCallCheck(this, LanguageCreate);
+    _classCallCheck(this, Filter);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(LanguageCreate).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Filter).call(this));
     _this.state = {
       languages: [],
-      languageProficiencies: ["Novice", "Intermediate", "Advanced", "Native"],
-      languageSkills: ["Speaking", "Reading", "Writing"]
+      countries: [],
+      proficiencyOptions: {
+        1: "Novice",
+        2: "Intermediate",
+        3: "Advanced",
+        4: "Native"
+      },
+      residencyLengthOptions: {
+        1: "1-3 months",
+        2: "4-6 months",
+        3: "7-11 months",
+        4: "1-3 years",
+        5: "More than 3 years"
+      },
+      residencyRecencyOptions: {
+        1: "Within the last year",
+        2: "1-3 years ago",
+        3: "3-10 years ago",
+        4: "More than 10 years ago"
+      },
+      numOfConditions: 0
     };
     return _this;
   }
 
-  _createClass(LanguageCreate, [{
+  _createClass(Filter, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"], {
-        className: "mt-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Header, null, "Add New Language Skill"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Group, {
-        controlId: "languages",
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Label, {
-        className: "col-sm-2"
-      }, "Languages"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"].Control, {
-        as: "select",
-        className: "col-sm-8"
-      }, this.state.languageList.map(function (l) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          key: l,
-          value: l
-        }, l);
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        className: "btn btn-success mx-3"
-      }, "Submit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        className: "btn btn-danger mx-3"
-      }, "Cancel"))));
+      var _this3 = this;
+
+      var addFilter = function addFilter() {
+        console.log(_this3.state);
+
+        _this3.setState({
+          numOfConditions: _this3.state.numOfConditions + 1
+        }, function () {
+          var d = document.createElement("div");
+          var id = "condition_" + _this3.state.numOfConditions;
+          d.id = id;
+          d.className = "row";
+          document.getElementById("adminFilter").appendChild(d);
+          react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Condition__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            prop: _this3.state
+          }), document.getElementById(id));
+        });
+      };
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-success",
+        onClick: addFilter
+      }, "Add Filter"));
     }
   }]);
 
-  return LanguageCreate;
+  return Filter;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
 
-if (document.getElementById("languageCreate")) {
-  var ele = document.getElementById("languageCreate");
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LanguageCreate, null), ele);
+if (document.getElementById("adminFilter")) {
+  var ele = document.getElementById("adminFilter");
+  react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Filter, null), ele);
 }
 
 /***/ }),

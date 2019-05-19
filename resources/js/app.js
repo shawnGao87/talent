@@ -13,4 +13,4 @@ require("./bootstrap");
  */
 
 require("./components/TalentForm");
-require("./components/user/language/LanguageCreate");
+require("./components/admin/Filter");

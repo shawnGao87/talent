@@ -3,7 +3,9 @@
 {{-- {{dd($users)}} --}}
 
 @section('content')
-  
+  <div class="container my-5">
+      <div id="adminFilter" class="my-4"></div>
+  </div>
     <div class="container my-5">
         <table id="adminGrid" class="table table-striped">
             <thead>

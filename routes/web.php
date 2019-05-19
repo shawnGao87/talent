@@ -34,6 +34,14 @@ Route::resource('userCountryLived', 'UserCountryLivedController');
  * * CRUD Route for Languages 
  */
 Route::resource('languages', 'LanguageController');
+Route::get('allLanguages', 'LanguageController@allLanguages');
+
+/**
+ * * CRUD Route for Countries 
+ */
+Route::resource('countries', 'CountryController');
+Route::get('allCountries', 'CountryController@allCountries');
+
 
 /**
  * * Admin Index 

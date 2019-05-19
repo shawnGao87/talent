@@ -17,6 +17,12 @@ class CountryController extends Controller
         //
     }
 
+    public function allCountries()
+    {
+        $countries = Country::all();
+        return response()->json($countries);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
