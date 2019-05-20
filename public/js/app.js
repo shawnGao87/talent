@@ -76193,7 +76193,17 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Condition).call(this));
     _this.state = {
-      conditionOptiones: ["Language", "Language Speaking Proficiency", "Language Reading Proficiency", "Language Writing Proficiency", "Country Lived", "Country Lived Residency Length", "Country Lived Residency Recency"]
+      conditionOptions: {
+        language_id: "Language",
+        speaking: "Language Speaking Proficiency",
+        reading: "Language Reading Proficiency",
+        writing: "Language Writing Proficiency",
+        country_id: "Country Lived",
+        residency_length: "Country Lived Residency Length",
+        residency_recency: "Country Lived Residency Recency"
+      },
+      conditionSelected: "",
+      conditionOptionSelected: ""
     };
     return _this;
   }
@@ -76201,6 +76211,8 @@ function (_Component) {
   _createClass(Condition, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props$prop = this.props.prop,
           languages = _this$props$prop.languages,
           countries = _this$props$prop.countries,
@@ -76209,12 +76221,18 @@ function (_Component) {
           residencyRecencyOptions = _this$props$prop.residencyRecencyOptions,
           numOfConditions = _this$props$prop.numOfConditions;
 
+      var removeFilter = function removeFilter(e) {
+        console.log(e.target.attributes["data-condition"].value);
+        var eleId = e.target.attributes["data-condition"].value;
+        document.getElementById("adminFilter").removeChild(document.getElementById(eleId));
+      };
+
       var renderOptions = function renderOptions(e) {
         var key = e.target.value;
         console.log(key);
 
         switch (key) {
-          case "Language":
+          case "language":
             var optionEle = document.getElementById("condition".concat(numOfConditions, "_options"));
 
             while (optionEle.firstChild) {
@@ -76229,11 +76247,30 @@ function (_Component) {
             });
             break;
 
-          case "Language Speaking Proficiency" || false || false:
-            var ele2 = document.getElementById("condition".concat(numOfConditions, "_options"));
+          case "country_id":
+            var countryEle = document.getElementById("condition".concat(numOfConditions, "_options"));
 
-            while (ele2.firstChild) {
-              ele2.removeChild(ele2.firstChild);
+            while (countryEle.firstChild) {
+              countryEle.removeChild(countryEle.firstChild);
+            }
+
+            countries.forEach(function (country) {
+              var o = document.createElement("option");
+              o.value = country.id;
+              o.innerHTML = country.country;
+              countryEle.appendChild(o);
+            });
+            break;
+          // render condition options for multi select
+          // three case fall through
+
+          case "speaking":
+          case "reading":
+          case "writing":
+            var proficiencyEle = document.getElementById("condition".concat(numOfConditions, "_options"));
+
+            while (proficiencyEle.firstChild) {
+              proficiencyEle.removeChild(proficiencyEle.firstChild);
             }
 
             for (var _key in proficiencyOptions) {
@@ -76241,7 +76278,45 @@ function (_Component) {
                 var o = document.createElement("option");
                 o.value = _key;
                 o.innerHTML = proficiencyOptions[_key];
-                ele2.appendChild(o);
+                proficiencyEle.appendChild(o);
+              }
+            }
+
+            break;
+
+          case "residency_length":
+            var lengthEle = document.getElementById("condition".concat(numOfConditions, "_options"));
+
+            while (lengthEle.firstChild) {
+              lengthEle.removeChild(lengthEle.firstChild);
+            }
+
+            for (var _key2 in residencyLengthOptions) {
+              if (residencyLengthOptions.hasOwnProperty(_key2)) {
+                var _o = document.createElement("option");
+
+                _o.value = _key2;
+                _o.innerHTML = residencyLengthOptions[_key2];
+                lengthEle.appendChild(_o);
+              }
+            }
+
+            break;
+
+          case "residency_recency":
+            var recencyEle = document.getElementById("condition".concat(numOfConditions, "_options"));
+
+            while (recencyEle.firstChild) {
+              recencyEle.removeChild(recencyEle.firstChild);
+            }
+
+            for (var _key3 in residencyRecencyOptions) {
+              if (residencyRecencyOptions.hasOwnProperty(_key3)) {
+                var _o2 = document.createElement("option");
+
+                _o2.value = _key3;
+                _o2.innerHTML = residencyRecencyOptions[_key3];
+                recencyEle.appendChild(_o2);
               }
             }
 
@@ -76256,23 +76331,17 @@ function (_Component) {
         className: "d-flex justify-content-center align-items-center col-md-5 col-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "flex item-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-        xmlns: "http://www.w3.org/2000/svg",
-        width: "12",
-        height: "12",
-        viewBox: "0 0 12 12",
-        className: "icon m-3",
-        style: {
-          shapeRendering: "geometricprecision"
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-        fillRule: "evenodd",
-        fill: "currentColor",
-        d: "M7.41421356,6 L9.88226406,3.5319495 C10.0816659,3.33254771 10.0828664,3.01179862 9.88577489,2.81470708 L9.18529292,2.11422511 C8.97977275,1.90870494 8.66708101,1.91870543 8.4680505,2.11773594 L6,4.58578644 L3.5319495,2.11773594 C3.33254771,1.91833414 3.01179862,1.91713357 2.81470708,2.11422511 L2.11422511,2.81470708 C1.90870494,3.02022725 1.91870543,3.33291899 2.11773594,3.5319495 L4.58578644,6 L2.11773594,8.4680505 C1.91833414,8.66745229 1.91713357,8.98820138 2.11422511,9.18529292 L2.81470708,9.88577489 C3.02022725,10.0912951 3.33291899,10.0812946 3.5319495,9.88226406 L6,7.41421356 L8.4680505,9.88226406 C8.66745229,10.0816659 8.98820138,10.0828664 9.18529292,9.88577489 L9.88577489,9.18529292 C10.0912951,8.97977275 10.0812946,8.66708101 9.88226406,8.4680505 L7.41421356,6 L7.41421356,6 Z"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "close",
+        onClick: removeFilter
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "aria-hidden": "true",
+        "data-condition": "condition_".concat(numOfConditions)
+      }, "\xD7"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "flex item-center col-xs-12 col-sm-3"
       }, numOfConditions == 1 ? "Where" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        name: "andOr",
+        name: "andOr[".concat(numOfConditions, "]"),
         className: "form-control"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "and"
@@ -76281,16 +76350,16 @@ function (_Component) {
       }, "Or"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         id: "condition".concat(numOfConditions),
         className: "form-control col-xs-12 col-sm-9",
-        name: "condition".concat(numOfConditions),
+        name: "condition[".concat(numOfConditions, "]"),
         defaultValue: "Language",
         onChange: renderOptions
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         disabled: true
-      }, "Select Filter"), this.state.conditionOptiones.map(function (c, index) {
+      }, "Select Filter"), Object.keys(this.state.conditionOptions).map(function (key) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          key: index,
-          value: c
-        }, c);
+          key: key,
+          value: key
+        }, _this2.state.conditionOptions[key]);
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-center align-items-center col-md-7 col-sm-12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -76299,6 +76368,7 @@ function (_Component) {
         className: "flex item-center col-xs-12 col-sm-9"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         id: "condition".concat(numOfConditions, "_options"),
+        name: "condition_options[".concat(numOfConditions, "][]"),
         className: "form-control",
         multiple: true,
         size: 3
@@ -76428,15 +76498,13 @@ function (_Component) {
       var _this3 = this;
 
       var addFilter = function addFilter() {
-        console.log(_this3.state);
-
         _this3.setState({
           numOfConditions: _this3.state.numOfConditions + 1
         }, function () {
           var d = document.createElement("div");
           var id = "condition_" + _this3.state.numOfConditions;
           d.id = id;
-          d.className = "row";
+          d.className = "row my-3";
           document.getElementById("adminFilter").appendChild(d);
           react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Condition__WEBPACK_IMPORTED_MODULE_3__["default"], {
             prop: _this3.state
@@ -76444,8 +76512,8 @@ function (_Component) {
         });
       };
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-success",
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "btn btn-info",
         onClick: addFilter
       }, "Add Filter"));
     }

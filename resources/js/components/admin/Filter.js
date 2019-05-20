@@ -48,7 +48,6 @@ export default class Filter extends Component {
     }
     render() {
         const addFilter = () => {
-            console.log(this.state);
             this.setState(
                 { numOfConditions: this.state.numOfConditions + 1 },
                 () => {
@@ -67,9 +66,9 @@ export default class Filter extends Component {
 
         return (
             <Fragment>
-                <button className="btn btn-success" onClick={addFilter}>
+                <a className="btn btn-info" onClick={addFilter}>
                     Add Filter
-                </button>
+                </a>
             </Fragment>
         );
     }

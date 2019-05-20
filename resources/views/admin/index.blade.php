@@ -4,7 +4,12 @@
 
 @section('content')
   <div class="container my-5">
-      <div id="adminFilter" class="my-4"></div>
+        <form action={{url('/admin')}} method="post">
+            @csrf
+            <div id="adminFilter" class="my-4"></div>
+            <button type="submit" class="btn btn-success">Filter Result</button>
+            <a href={{url('/admin')}} class="btn btn-outline-primary">Clear Filter</a>
+        </form>
   </div>
     <div class="container my-5">
         <table id="adminGrid" class="table table-striped">

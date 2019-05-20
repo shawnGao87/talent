@@ -47,6 +47,7 @@ Route::get('allCountries', 'CountryController@allCountries');
  * * Admin Index 
  */
 Route::get('admin', 'AdminController@index');
+Route::post('admin', 'AdminController@index');
 
 /**
  * * Get All Users for Admin panel
