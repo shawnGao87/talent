@@ -24,4 +24,15 @@
         }
     }
     ```
--   To work with IIS, need to install URL Rewrite for IIS: https://www.iis.net/downloads/microsoft/url-rewrite. Then add web.config in public folder after setting up Virtual Directory
+
+
+    ```
+
+-   Add in /login/index.php in line 29:
+-   ```
+        if ($_GET['redirect']) {
+        $SESSION->redirect = '/' . $_GET['redirect'];
+    }
+    ```
+
+*   To work with IIS, need to install URL Rewrite for IIS: https://www.iis.net/downloads/microsoft/url-rewrite. Then add web.config in public folder after setting up Virtual Directory

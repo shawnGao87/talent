@@ -31,7 +31,7 @@
                     <td>{{$user['lived_countries']}}</td>
                     <td><a
                         class="btn btn-primary"
-                        href="UserSkills/detail/"{{$user->id}} 
+                        href="UserSkills/detail/{{$user->id}}" 
                     >
                         Detail
                     </a></td>
