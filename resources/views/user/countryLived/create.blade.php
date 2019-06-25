@@ -14,9 +14,9 @@
 @endif
     <div class="container">
         <div class="card mt-5">
-            <div class="card-header"><h2>Add New Country You Have Lived In</h2></div>
+            <div class="card-header"><h2>Add New Country Experience</h2></div>
             <div class="card-body">
-            <form action={{url('/userCountryLived')}}  method="POST">  
+            <form action={{url('/userCountryExperience')}}  method="POST">
                         @include('includes.userCountryLivedForm')
                         <button type="submit" class="btn btn-success">Submit</button>
                     </form>

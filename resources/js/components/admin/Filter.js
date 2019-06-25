@@ -7,13 +7,11 @@ export default class Filter extends Component {
     componentWillMount() {
         Axios.get("./allLanguages")
             .then(res => {
-                console.log(res.data);
                 this.setState({ languages: res.data });
             })
             .catch(e => console.log(e));
         Axios.get("./allCountries")
             .then(res => {
-                console.log(res.data);
                 this.setState({ countries: res.data });
             })
             .catch(e => console.log(e));
@@ -30,14 +28,14 @@ export default class Filter extends Component {
                 3: "Advanced",
                 4: "Native"
             },
-            residencyLengthOptions: {
-                1: "1-3 months",
-                2: "4-6 months",
-                3: "7-11 months",
-                4: "1-3 years",
-                5: "More than 3 years"
-            },
-            residencyRecencyOptions: {
+            // residencyLengthOptions: {
+            //     1: "1-3 months",
+            //     2: "4-6 months",
+            //     3: "7-11 months",
+            //     4: "1-3 years",
+            //     5: "More than 3 years"
+            // },
+            experienceRecencyOptions: {
                 1: "Within the last year",
                 2: "1-3 years ago",
                 3: "3-10 years ago",
@@ -67,14 +65,16 @@ export default class Filter extends Component {
         return (
             <Fragment>
                 <a className="btn btn-info" onClick={addFilter}>
-                    Add Filter
+                    {this.state.numOfConditions == 0
+                        ? "Add Filter"
+                        : "Add Another Filter"}
                 </a>
             </Fragment>
         );
     }
 }
 
-if (document.getElementById("adminFilter")) {
-    const ele = document.getElementById("adminFilter");
+if (document.getElementById("addFilter")) {
+    const ele = document.getElementById("addFilter");
     ReactDOM.render(<Filter />, ele);
 }

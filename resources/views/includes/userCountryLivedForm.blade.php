@@ -1,45 +1,77 @@
 <input type="hidden" name="user_id" value={{$userId}}>
 <div class="form-group row justify-content-center">
-    <label for="language" class="col-sm-4 col-form-label">Country</label>
-    <div class="col-xs-12 col-sm-4">
+    I have
 
-    <select name="country_id" id="country" class="form-control">
-        @foreach ($countries as $country)
-            <option value = {{$country->id}} {{ $country->id == $userCountryLived->country_id ? "selected" : ''}}>{{$country->country}}</option>
+
+    <select name="experience_type" id="experience_type" class="d-inline-block mx-2">
+        @foreach($userCountryExperience->experienceTypeOptions() as $key=>$value)
+            <option value={{$key}} {{$userCountryExperience->experience_type == $key ? 'selected' : ''}}>{{$value}}</option>
         @endforeach
     </select>
-    </div>
+
+     in the country of
+    <select name="country_id" id="country_id" class="d-inline-block mx-2">
+        @foreach($countries as $index => $country)
+            <option value={{$country->id}} {{$userCountryExperience->country_id == $id ? 'selected' : ''}}>{{$country->country}}</option>
+        @endforeach
+    </select>
+
+    for a total of
+
+    <select name="experience_year" id="experience_year" class="d-inline-block mx-2">
+        @foreach($userCountryExperience->experienceYearOptions() as $key => $value)
+            <option value={{$key}} {{$userCountryExperience->experience_year == $key ? 'selected' : ''}}>{{$value}} </option>
+        @endforeach
+    </select>
+    years and
+
+    <select name="experience_month" id="experience_month" class="d-inline-block mx-2">
+        @foreach($userCountryExperience->experienceMonthOptions() as $key => $value)
+            <option value={{$key}} {{$userCountryExperience->experience_month == $key ? 'selected' : ''}}>{{$value}} </option>
+        @endforeach
+    </select>
+    months.
+
+	<div class="form-group mt-5" id="other_experience_comments_container" style="display:none;">
+		<label for="comments">Please explain what other experience did you have.</label>
+		<textarea class="form-control" id="other_experience_comments" rows="4"></textarea>
+		
+	</div>
+	
 </div>
+
+
 
 <div class="form-group row justify-content-center">
-    
-        
-        <label for="residency_length" class="col-sm-4 col-form-label">How long did you live there?</label>
-    
-    <div class="col-xs-12 col-sm-4">
-            <select name="residency_length" id="residency_length" class="form-control">
-                    @foreach ($userCountryLived->residenceLengthOptions() as $index => $length)
-                        <option value = {{$index}} {{ $length == $userCountryLived->residency_length ? "selected" : ''}}>{{$length}}</option>
-                    @endforeach
-                </select>
-        </div>
+    The experience was within the last 
+    <select name="experience_recency" id="experience_recency" class="d-inline-block mx-2">
+        @foreach ($userCountryExperience->experienceYearOptions() as $index => $recency)
+            <option value = {{$index}} {{ $recency == $userCountryLived->residence_recency ? "selected" : ''}}>{{$recency}}</option>
+        @endforeach
+    </select>
 
-   
-</div>
-
-<div class="form-group row justify-content-center">
-    <label for="residency_recency" class="col-sm-4 col-form-label">How recently did you live there?</label>
-    <div class="col-xs-12 col-sm-4">
-            <select name="residency_recency" id="residency_recency" class="form-control">
-                    @foreach ($userCountryLived->residenceRecencyOptions() as $index => $recency)
-                        <option value = {{$index}} {{ $recency == $userCountryLived->residence_recency ? "selected" : ''}}>{{$recency}}</option>
-                    @endforeach
-                </select>
-    </div>
+	years.
     
 </div>
 
+
+<div class="form-group">
+	<label for="comments">Please include additional comments on your experience. (e.g. specific cities you know well, cultural knowledge, etc..)</label>
+    <textarea class="form-control" id="comments" rows="4"></textarea>
+    
+</div>
 
 
     
 @csrf
+
+
+<script>
+	$('#experience_type').on('change', function () {
+		if ($('#experience_type').val() == 'other_experience') {
+			$('#other_experience_comments_container').show();
+		} else {
+			$('#other_experience_comments_container').hide();
+		}
+	})
+</script>

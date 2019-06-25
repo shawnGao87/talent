@@ -27,7 +27,7 @@ Route::resource('userLanguageSkills', 'UserLanguageSkillController');
 /**
  * * CRUD route for users' Country Lived skills
  */
-Route::resource('userCountryLived', 'UserCountryLivedController');
+Route::resource('userCountryExperience', 'UserCountryExperienceController');
 
 
 /**
@@ -61,3 +61,11 @@ Route::get('users', 'AdminController@getAllUsers');
 Route::get('UserSkills/{id}', 'UserSkillController@index');
 
 Route::get('UserSkills/detail/{id}', 'UserSkillController@detail');
+
+Route::get('allHobbies', 'HobbiesController@allHobbies');
+
+
+/**
+ * * CRUD route for users' Country Lived skills
+ */
+Route::resource('userHobbies', 'UserHobbiesController');

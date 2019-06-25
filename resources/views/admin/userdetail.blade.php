@@ -35,7 +35,7 @@
         @endif
 
 
-        @if ($user['user_country_lived'])
+        @if ($user['user_country_experience'])
         <div class="card my-5">
             <div class="card-header"><b>Country Lived In</b></div>
             <div class="card-body">
@@ -43,20 +43,31 @@
                     <thead>
                         <tr>
                         <th scope="col">Country</th>
-                        <th scope="col">Residence Length</th>
-                        <th scope="col">Residence Recency</th>
+                        <th scope="col">Exp. Type</th>
+                        <th scope="col">Exp. Length</th>
+                        <th scope="col">Exp. Recency</th>
                         </tr>
                     </thead>
                     <tbody>                        
-                        @foreach ($user['user_country_lived'] as $country_lived)
+                        @foreach ($user['user_country_experience'] as $country_exp)
                         <tr>
-                        <th>{{$country_lived['country_id']}}</th>
-                            <td>{{$country_lived['residency_length']}}</td>
-                            <td>{{$country_lived['residency_recency']}}</td>
+                        <th>{{$country_exp['country_id']}}</th>
+                            <td>{{$country_exp['experience_type']}}</td>
+                            <td>{{$country_exp['experience_year']." years and ".$country_exp['experience_month']." months."}}</td>
+                            <td>{{$country_exp['experience_recency']}}</td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+		@endif
+		
+		@if ($user['hobbies_string'])
+        <div class="card my-5">
+            <div class="card-header"><b>Hobbies</b></div>
+            <div class="card-body">
+				<h3>{{$user['hobbies_string']}}</h3>
             </div>
         </div>
         @endif

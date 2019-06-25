@@ -2,10 +2,9 @@
 <div class="form-group row justify-content-center">
     <label for="language" class="col-sm-4 col-form-label">Language</label>
     <div class="col-xs-12 col-sm-4">
-
     <select name="language_id" id="language" class="form-control">
-        @foreach ($languages as $language)
-            <option value = {{$language->id}} {{ $language->id == $userLanguageSkill->language_id ? "selected" : ''}}>{{$language->language}}</option>
+        @foreach ($languages as $index=>$language)
+            <option value = "{{$language->id}}" {{ $language->language == $userLanguageSkill->language_id ? "selected" : ''}}>{{$language->language}}</option>
         @endforeach
     </select>
     </div>

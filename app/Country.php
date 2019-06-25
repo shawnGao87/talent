@@ -13,6 +13,6 @@ class Country extends Model
 
     public function user_country_lived()
     {
-        return $this->hasMany('App\UserCountryLived');
+        return $this->hasMany('App\UserCountryExperience');
     }
 }
