@@ -11,15 +11,21 @@ class AdminController extends Controller
 		$userQuery = User::with(['language_skills',  'user_country_experience', 'hobbies']);
 
 		if (isset(request()->condition)) {
-			// dd(request());
+			// dd(request()->condition);
 
 
 			$conditions = request()->condition;
+
 			$condition_options = request()->condition_options;
 			$and_ors = request()->andOr;
 
 			foreach ($conditions as $num => $condition) {
-
+				/**
+				 * !! checking if every condition has a corresponding condition_option selected
+				 */
+				if (!isset($condition_options[$num])) {
+					return redirect('/admin')->with('filter_empty_error', 'You added a filter, but no filter criteria was selected.');
+				}
 				if (in_array($condition, ['language_id', 'reading', 'writing', 'speaking'])) {
 					$this->qualifier($userQuery, 'language_skills', $num, $condition, $condition_options, $and_ors);
 				} else {

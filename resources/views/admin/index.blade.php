@@ -10,7 +10,12 @@
 			<div id="addFilter" class="mb-3"></div>
             <button type="submit" class="btn btn-success">Filter Result</button>
             <a href={{url('/admin')}} class="btn btn-outline-primary">Clear Filters</a>
-        </form>
+		</form>
+		@if (session()->has('filter_empty_error'))
+			<div class="alert alert-danger mt-3" role="alert">
+				{{session()->get('filter_empty_error')}}
+			</div>
+		@endif
   </div>
     <div class="container my-5">
         <table id="adminGrid" class="table table-striped">
