@@ -21,7 +21,7 @@ class HomeController extends Controller
 
 		require($_SERVER['DOCUMENT_ROOT'] . '/config.php');
 		$user_id = $GLOBALS['USER']->id;
-		$user = User::with('language_skills', 'user_country_experience', 'hobbies')->find($user_id);
+		$user = User::with('language_skills', 'user_country_experience', 'hobbies', 'cities')->find($user_id);
 		$user_hobby_ids = [];
 		foreach ($user->hobbies as $index => $hobby) {
 			array_push($user_hobby_ids, $hobby->id);

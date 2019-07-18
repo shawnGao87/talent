@@ -39,6 +39,16 @@ class User extends Authenticatable
 
 
 	/**
+	 * * relationship with cities
+	 */
+	public function cities()
+	{
+		return $this->hasMany('App\UserCity');
+	}
+
+
+
+	/**
 	 * * relationship with language skills
 	 */
 	public function language_skills()

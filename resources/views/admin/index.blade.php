@@ -24,8 +24,8 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Language Known</th>
-                    <th>Country Experience</th>
-                    <th>Hobbies</th>
+                    <th>Country Experiences</th>
+                    <th>Skills and Hobbies</th>
                     <th>Detail</th>
                 </tr>
             </thead>

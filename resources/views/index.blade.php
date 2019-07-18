@@ -17,15 +17,17 @@
 
 		<ul class="nav nav-tabs card-header mt-5">
 			<li class="nav-item">
-				<a class="nav-link active" href="#language_skills" role="tab" data-toggle="tab">Language Skills</a>
+				<a class="nav-link active" href="#language_skills" role="tab" data-toggle="tab">Languages</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#experienced_countries" role="tab" data-toggle="tab">Countries Experienced</a>
+				<a class="nav-link" href="#experienced_countries" role="tab" data-toggle="tab">Country Experiences</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#hobbies" role="tab" data-toggle="tab">Hobbies</a>
+				<a class="nav-link" href="#hobbies" role="tab" data-toggle="tab">Skills and Hobbies</a>
 			</li>
-			
+			<li class="nav-item">
+				<a class="nav-link" href="#us_cities" role="tab" data-toggle="tab">US Cities</a>
+			</li>			
 		</ul>
 		<div class="tab-content card-body">
 			<div class="tab-pane fade show active" id="language_skills" role="tabpanel" aria-labelledby="home-tab">
@@ -42,6 +44,13 @@
 			</div>
 			<div class="tab-pane fade" id="hobbies" role="tabpanel" aria-labelledby="messages-tab">
 				@include('includes.userHobbyList')
+			</div>
+			<div class="tab-pane fade" id="us_cities" role="tabpanel" aria-labelledby="messages-tab">
+				<h3 style="text-align:center;">Which U.S. cities do you feel comfortable navigating?</h3>
+				<div class="d-flex justify-content-center">
+					<a href={{url('/userCities/create')}} class="btn btn-success mb-3">Select Cities</a>
+				</div>
+				@include('includes.userCityList')
 			</div>
 		</div>
 		

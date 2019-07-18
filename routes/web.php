@@ -69,3 +69,9 @@ Route::get('allHobbies', 'HobbiesController@allHobbies');
  * * CRUD route for users' Country Lived skills
  */
 Route::resource('userHobbies', 'UserHobbiesController');
+
+
+/**
+ * * CRUD route for users' cities
+ */
+Route::resource('userCities', 'UserCityController');
